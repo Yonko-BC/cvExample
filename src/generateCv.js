@@ -1,14 +1,46 @@
 import React from "react";
-import { Document, Page, Text, View, StyleSheet , Image, PDFViewer } from "@react-pdf/renderer";
+import { Document, Page, Text, View, StyleSheet , Image, PDFViewer  } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
   page: {
     fontFamily: "Helvetica",
     fontSize: 12,
     padding: 20,
+    display: "flex",
+    flexDirection: "column",
   },
   section: {
     marginBottom: 10,
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
+    alignItems: "center",
+    flexGrow: 2,
+  },
+  name: {
+    fontSize: 28,
+    paddingBottom: 5,
+  },
+  header: {
+    marginBottom: 10,
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    flexGrow: 1,
+  },
+  form: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: "white",
+    backgroundColor: "yellow",
+  },
+  exp: {
+    fontSize: 16,
+    marginBottom: 5,
+    color: "red",
+    backgroundColor: "#688547",
   },
   heading: {
     fontSize: 16,
@@ -16,6 +48,7 @@ const styles = StyleSheet.create({
     color: "#688547",
   },
   subHeading: {
+
     fontSize: 14,
     marginBottom: 5,
   },
@@ -31,16 +64,28 @@ const CVDocument = ({c}) => {
   return (
     <Document>
     <Page style={styles.page}>
+      <View style={styles.header}>
+        <Text style={styles.name}>{c.first_name} {c.last_name}</Text> 
+        <Text style={styles.title}>{c.current_position}</Text> 
+      </View>
       <View style={styles.section}>
+        <View style={styles.form}>
+          <Text>2</Text>
+        </View>
+        <View style={styles.exp}>
+          <Text>3</Text>
+        </View>
+      </View>
+
+      {/* <View style={styles.section}>
         <View style={styles.section}>
-          <Image src={c.photo_url} style={styles.avatar} />
+          <Image src={{ uri: "https://i.pravatar.cc/300", method: 'GET', headers: {}, body: '' }} style={styles.avatar} />
           <Text style={styles.heading}>Personal Information</Text>
           <Text style={styles.subHeading}>Name: {c.first_name} {c.last_name}</Text>
           <Text style={styles.subHeading}>Email: {c.email}</Text>
           <Text style={styles.subHeading}>Phone: {c.mobile}</Text>
           <Text style={styles.subHeading}>Address: {c.country}</Text>
         </View>
-
         <Text style={styles.heading}>Education</Text>
         {c.educations.map((education, index) => (
           <View key={index} style={styles.section}>
@@ -59,8 +104,7 @@ const CVDocument = ({c}) => {
           </View>
         ))}
 
-        {/* Add other sections of the CV */}
-      </View>
+      </View> */}
     </Page>
   </Document>
   );
@@ -89,7 +133,19 @@ const PDFGenerator = () => {
     photo_url: "https://i.pravatar.cc/300",
     state: "Rabat-Salé-Kénitra",
     current_salary: 10000,
+    skills: [
+      "React",
+      "Node",
+      "Express",
+      "MongoDB",
+      "JavaScript",
+      "HTML",
+      "CSS",
+      "Python",
+      "Java",
+      "C++",
 
+    ],
     educations: [
       {
         duration: {
