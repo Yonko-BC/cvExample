@@ -267,6 +267,7 @@ import {
   StyleSheet,
   Image,
   PDFViewer,
+  Link,
 } from "@react-pdf/renderer";
 const styles = StyleSheet.create({
   page: {
@@ -381,7 +382,10 @@ const CVDocument = ({ c }) => {
             <Text>{`State: ${c.state}`}</Text>
             <Text>{`Email: ${c.email}`}</Text>
             <Text>{`Mobile: ${c.mobile}`}</Text>
-            <Text>{`LinkedIn: ${c.linkedin_url}`}</Text>
+            <Text>LinkedIn: <Link style={{
+              color: "blue",
+              textDecoration: "none",
+            }}  src={c.linkedin_url}>{`${c.first_name} ${c.last_name}`}</Link> </Text>
           </View>
           <View style={styles.line} />
           <View style={styles.section}>
